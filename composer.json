@@ -23,7 +23,5 @@
         "psr-4": {
             "Artapamudaid\\GeminiHelper\\": "src/"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
