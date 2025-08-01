@@ -14,7 +14,7 @@ composer require artapamudaid/gemini-helper
 <?php
 require 'vendor/autoload.php';
 
-use YourUsername\GeminiHelper\GeminiHelper;
+use Artapamuda\GeminiHelper\GeminiHelper;
 
 $apiKey = 'YOUR_API_KEY';
 

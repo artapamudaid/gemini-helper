@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "YourUsername\\GeminiHelper\\": "src/"
+            "Artapamudaid\\GeminiHelper\\": "src/"
         }
     },
     "minimum-stability": "dev",
