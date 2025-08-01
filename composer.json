@@ -1,0 +1,29 @@
+{
+    "name": "artapamudaid/gemini-helper",
+    "description": "A simple PHP native helper for the Google Gemini API.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arta Tri Pamuda",
+            "email": "pamuda.id@gmail.com"
+        }
+    ],
+    "keywords": [
+        "gemini",
+        "gemini-api",
+        "php-helper",
+        "multimodal",
+        "ai"
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "YourUsername\\GeminiHelper\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
