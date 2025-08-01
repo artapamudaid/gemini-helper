@@ -5,7 +5,7 @@ A simple and easy-to-use PHP helper class to interact with the Google Gemini API
 ### Installation
 
 ```bash
-composer require your-username/gemini-helper
+composer require artapamudaid/gemini-helper
 ```
 
 ### Usage
