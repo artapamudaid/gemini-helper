@@ -17,6 +17,42 @@ class GeminiHelper {
         $this->apiUrl .= $apiKey;
     }
 
+
+
+    public function convertToHtml($text) {
+        // Mengonversi **teks** dan __teks__ menjadi <strong>
+        $text = preg_replace('/\*\*(.*?)\*\*|__(.*?)__/', '<strong>$1$2</strong>', $text);
+
+        // Mengonversi *teks* dan _teks_ menjadi <em>
+        $text = preg_replace('/(?<!\*)\*(?!\*)(.*?)(?<!\*)\*(?!\*)|(?<!\_)\_(?!\_)(.*?)(?<!\_)\_(?!\_)/', '<em>$1$2</em>', $text);
+
+        // Mengonversi ### Judul menjadi <h3>
+        $text = preg_replace('/^### (.*)$/m', '<h3>$1</h3>', $text);
+
+        // Mengonversi ## Judul menjadi <h2>
+        $text = preg_replace('/^## (.*)$/m', '<h2>$1</h2>', $text);
+
+        // Mengonversi list item dengan "-" atau "*" menjadi <ul> dan <li>
+        $text = preg_replace('/^\s*[-*] (.*)$/m', '<li>$1</li>', $text);
+        if (strpos($text, '<li>') !== false) {
+            $text = '<ul>' . $text . '</ul>';
+            $text = str_replace('</ul>' . "\n" . '<ul>', '', $text); // Gabungkan jika ada dua list
+        }
+        
+        // Mengonversi baris baru menjadi <br>
+        $text = nl2br($text);
+        
+        // Mengonversi teks biasa menjadi <p> dan memastikan tag list tidak berada di dalam tag p
+        $text = str_replace('<br />', '', $text);
+        $text = '<p>' . $text . '</p>';
+        $text = preg_replace('/<p>(.*?)<\/p>/s', '<p>$1</p>', $text);
+        $text = str_replace(['<p><ul>', '</ul></p>'], ['<ul>', '</ul>'], $text);
+        $text = str_replace(['<p><h3>', '</h3></p>'], ['<h3>', '</h3>'], $text);
+        $text = str_replace(['<p><h2>', '</h2></p>'], ['<h2>', '</h2>'], $text);
+        
+        return $text;
+    }
+
     /**
      * Metode internal untuk mengirim permintaan ke Gemini API.
      * @param array $contents Payload untuk permintaan API.
