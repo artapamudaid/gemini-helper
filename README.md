@@ -25,6 +25,11 @@ try {
     $result = $gemini->generateText('Tuliskan 3 tips untuk belajar PHP.');
     echo $result;
 
+    // Convert Result to HTML
+    $result = $gemini->generateText('Tuliskan 3 tips untuk belajar PHP.');
+    $resultToHtml = $gemini->convertToHtml($result)
+    echo $resultToHtml;
+
     // Summarize a PDF
     $summary = $gemini->summarizePdf('path/to/document.pdf');
     echo $summary;
