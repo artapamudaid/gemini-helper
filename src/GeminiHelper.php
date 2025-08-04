@@ -189,4 +189,29 @@ class GeminiHelper {
         
         return $response['candidates'][0]['content']['parts'][0]['text'] ?? "Tidak dapat membuat caption.";
     }
+
+    public function captionImageFromBase64($base64Data, $mimeType, $prompt = "Tolong buatkan caption singkat dan menarik untuk gambar ini.") {
+        $contents = [
+            [
+                'parts' => [
+                    ['text' => $prompt],
+                    [
+                        'inlineData' => [
+                            'mimeType' => $mimeType,
+                            'data' => $base64Data,
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $this->sendRequest($contents);
+
+        if (isset($response['error'])) {
+            return $response['error'];
+        }
+        
+        // Mengekstrak teks dari respons Gemini
+        return $response['candidates'][0]['content']['parts'][0]['text'] ?? "Tidak dapat membuat caption.";
+    }
 }

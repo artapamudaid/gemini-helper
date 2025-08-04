@@ -38,6 +38,10 @@ try {
     $caption = $gemini->captionImage('path/to/image.jpg');
     echo $caption;
 
+    // Caption an Image 
+    $caption = $gemini->captionImageFromBase64('path/to/image/base64/format');
+    echo $caption;
+
 } catch (\Exception $e) {
     echo "Error: " . $e->getMessage();
 }
